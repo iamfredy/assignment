@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
-  get 'static_pages/home'
-  get 'static_pages/tweets'
-  get 'static_pages/register'
+  get 'users/new'
+
+  get '/home', to: 'static_pages#home'
+  get '/tweet', to: 'static_pages#tweet'
+  get '/login', to: 'static_pages#login'
   root 'static_pages#home'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get  '/signup',  to: 'users#new'
 end

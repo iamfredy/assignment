@@ -2,10 +2,10 @@ class StaticPagesController < ApplicationController
   def home
   end
 
-  def tweets
+  def tweet
   end
 
-  def register
+  def login
   end
 
 end
