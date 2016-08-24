@@ -4,4 +4,8 @@ class StaticPagesController < ApplicationController
 
   def tweets
   end
+
+  def register
+  end
+
 end
