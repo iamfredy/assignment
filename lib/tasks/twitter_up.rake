@@ -1,14 +1,20 @@
 namespace :twit do
   task :tweet_now => :environment do
     puts "started rake"
-    require 'twitter' 
+    require 'twitter'  
+    tweets=Tweet.all  
+    tweets.each do |new_tweet|       
+      puts new_tweet.content
       client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = "3kJvlfYwZwzqlpQQA6dn0QOoi"
-      config.consumer_secret     = "SJ5WTDkYQX7MZ8GUxXy4LgDB4Lkr23uxJeB6DTu1Vxh6Ido590"
-      config.access_token        = "768345140960169984-JUvnheckyWr5Pa06iHEOAyojKjkCmyn"
-      config.access_token_secret = "NUlBUznrRA9jfEvws5NU5vHBPJ7ByPlXB8wnQw8NTJUM9"
+        user=User.find_by(id:new_tweet.user_id)     
+        config.consumer_key        =user.consumer_key 
+        config.consumer_secret     = user.consumer_secret
+        config.access_token        = user.access_token
+        config.access_token_secret = user.access_token_secret
+        puts user.name
+    end      
+      client.update("Tweeting via Ruby Gem @#{Time.now} and Rake Task\nTweet:#{new_tweet.content}")              
+      new_tweet.delete 
     end
-    client.update("Tweeting via Ruby Gem #{Time.now}")
-    puts "updated tweet"
   end
 end

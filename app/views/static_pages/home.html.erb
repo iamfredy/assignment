@@ -1,7 +1,19 @@
 <% provide(:title, "Home") %>
     <h1>Tweet-R</h1>
     <p>
-      <h3>This is the home page</h3>
+     <% if logged_in? %>
+      <h3>Hello <%= current_user.name %></h3>
+      <hr>
+      <br>
+      <%= form_for(@tweet) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <div class="field">
+          <%= f.text_area :content, placeholder: "Compose new Tweet..." %>
+        </div>
+        <%= f.submit "Post", class: "btn btn-primary" %>
+      <% end %>
     </p>
+    <% else %>
       <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
+    <% end %>  
 </html>
