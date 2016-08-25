@@ -1,6 +1,13 @@
 <% provide(:title, "Tweet") %>
 <h1>Tweet-R</h1>
+
 <p>
     This is Where i tweet
+    <select>
+    <%= fill_time_zones.each{|i|%>
+      <option value=<%= i %>><%= i %></option>
+    <%}%>
+    </select>  
+
 </p>
 

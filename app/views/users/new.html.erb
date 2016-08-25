@@ -29,7 +29,10 @@
       <%= f.text_field :access_token %>
 
       <%= f.label :access_token_secret, "Access Token Secret" %>
-      <%= f.text_field :access_token_secret %>            
+      <%= f.text_field :access_token_secret %>  
+
+      <%= f.label :time_zone, "Select Time Zone" %>
+      <%= f.select :time_zone, options_for_select(fill_time_zones.collect{ |u| [u,u] }),prompt: 'Select One'%>          
 
       <%= f.submit "Create my account", class: "btn btn-primary" %>
     <% end %>

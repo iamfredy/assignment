@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160825060023) do
+ActiveRecord::Schema.define(version: 20160825111326) do
 
   create_table "tweets", force: :cascade do |t|
     t.text     "content"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20160825060023) do
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
     t.string   "password_digest"
+    t.string   "timezone"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

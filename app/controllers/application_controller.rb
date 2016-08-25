@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+
   include SessionsHelper
-    private
 
     # Confirms a logged-in user.
     def logged_in_user
@@ -11,4 +11,10 @@ class ApplicationController < ActionController::Base
         redirect_to login_url
       end
     end
+    # around_action :set_time_zone, if: :current_user  
+    # private
+    # def set_time_zone(&block)
+    #   Time.use_zone(current_user.timezone)
+    # end
+
 end
